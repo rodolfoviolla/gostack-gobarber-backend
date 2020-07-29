@@ -5,8 +5,3 @@ tmp/*
 .env
 ormconfig.json
 coverage/
-prettier.config.js
-.eslintignore
-.eslintrc.json
-.editorconfig
-tsconfig.json
