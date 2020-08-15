@@ -25,7 +25,7 @@ jobs:
       run: yarn build
       
     # Copiar código novo para dentro da Digital Ocean
-    - name: Copy dist to Digital Ocean
+    - name: Copy code to Digital Ocean
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -38,3 +38,15 @@ jobs:
     # Executar o Yarn na Digital Ocean
     # Executar as migrations do TypeORM
     # Restart no servidor Node.js
+    - name: Run production scripts on Digital Ocean
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        port: ${{ secrets.SSH_PORT }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          cd ~/app/gostack-gobarber-backend
+          yarn
+          ./node_modules/.bin/typeorm migration:run
+          pm2 restart gobarber-api
