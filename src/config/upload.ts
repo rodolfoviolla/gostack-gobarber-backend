@@ -45,7 +45,7 @@ export default {
   config: {
     disk: {},
     s3: {
-      bucket: 'app-gobarber-antiheroi',
+      bucket: 'app-gobarber-avatar',
     },
   },
 } as IUploadConfig;
