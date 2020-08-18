@@ -10,7 +10,7 @@
 <h3 align="center">
   Controle a agenda de sua barbearia com estilo 🧔
 </h3>
-<span align="center">(Aplicação desenvolvida durante o Bootcamp GoStack da Rocketseat)</span>
+<p align="center">(Aplicação desenvolvida durante o Bootcamp GoStack da Rocketseat)</p>
 <p align="center">
   <br />
   
