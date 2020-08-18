@@ -29,11 +29,11 @@
 
 <p align="center">
  <a href="#features">Features</a> •
- <a href="#pre">Pré-requisitos</a> • 
- <a href="#rodar">Rodar o servidor localmente</a> • 
+ <a href="#pr%C3%A9-requisitos">Pré-requisitos</a> • 
+ <a href="#rodar-o-servidor-localmente">Rodar o servidor localmente</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
   <a href="#autor">Autor</a> • 
- <a href="#licenc">Licença</a>
+ <a href="#licen%C3%A7a">Licença</a>
 </p>
 
 ---
