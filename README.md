@@ -1,77 +1,109 @@
-# Back-End do GoBarber
+<h1 align="center">
+  <img
+     alt="logotipo do GoBarber"
+     title="GoBarber Logo"
+     src="./assets/README-logo.png"
+     width=200
+     height=200
+   />
+</h1>
+<h3 align="center">
+  Controle a agenda de sua barbearia com estilo 🧔
+</h3>
+<p align="center">(Aplicação desenvolvida durante o Bootcamp GoStack da Rocketseat)</p>
+<p align="center">
+  <br />
+  
+  <a href="#">
+    <img alt="Node.js" src="https://img.shields.io/badge/-Node.js-339933?style=flat&logo=Node.js&logoColor=white">
+  </a>
+  
+  <a href="#">
+    <img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-007acc?style=flat&logo=TypeScript">
+  </a>
+  
+  <a href="https://github.com/rodolfoviolla/gostack-gobarber-backend/blob/master/LICENSE">
+    <img alt="GitHub license" src="https://img.shields.io/github/license/rodolfoviolla/gostack-gobarber-backend">
+  </a>
+</p>
 
-Aplicação desenvolvida durante o Bootcamp GoStack da Rocketseat.
+<p align="center">
+ <a href="#features">Features</a> •
+ <a href="#pr%C3%A9-requisitos">Pré-requisitos</a> • 
+ <a href="#rodar-o-servidor-localmente">Rodar o servidor localmente</a> • 
+ <a href="#tecnologias">Tecnologias</a> • 
+  <a href="#autor">Autor</a> • 
+ <a href="#licen%C3%A7a">Licença</a>
+</p>
 
-Abaixo estão listadas as principais funcionalidades implementadas na última versão.
+---
 
-## Recuperação de senha
+### Features
 
-**Requisitos Funcionais (RF)**
+- [X] Cadastro de usuário
+ - Cadastro de novo usuário
+ - Recuperação senha de usuário já cadastrado
+ - Alteração de avatar e dados do perfil
+- [x] Login / Logout
+ - Acesso à funcionalidades de criação e consulta apenas por usuário logado
+- [X] Criação de agendamentos
+ - Consulta de disponibilidade de cada barbeiro
+- [X] Consulta de agendamentos
 
-- O usuário deve poder recuperar sua senha informando o seu e-mail;
-- O usuário deve receber um e-mail com instruções de recuperação de senha;
-- O usuário deve poder resetar sua senha;
+### Pré-requisitos
 
-**Requisitos Não Funcionais (RNF)**
+Você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/) e [Yarn](https://classic.yarnpkg.com/pt-BR/)
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-- Utilizar Mailtrap para testar envios em ambiente de desenvolvimento;
-- Utilizar Amazon SES para envios em produção;
-- O envio de e-mails deve acontecer em segundo plano (background job);
+### Rodar o servidor localmente
 
-**Regras de Negócio (RN)**
+```bash
+# Clone este repositório
+$ git clone <https://github.com/rodolfoviolla/gostack-gobarber-backend>
 
-- O link enviado por e-mail para resetar a senha deve expirar em 2h;
-- O usuário precisa confirmar a nova senha ao resetar sua senha;
+# Acesse a pasta do projeto no terminal/cmd
+$ cd gostack-gobarber-backend
 
-## Atualização do perfil
+# Instale as dependências
+$ yarn
 
-**RF**
+# Execute a aplicação em modo de desenvolvimento
+$ yarn dev:server
 
-- O usuário deve poder atualizar seu nome, e-mail e senha;
+# O servidor inciará na porta:3333 - acesse <http://localhost:3333>
+```
 
-**RNF**
+### Tecnologias
 
-**RN**
+As seguintes ferramentas foram usadas na construção do projeto:
 
-- O usuário não pode alterar seu e-mail para um e-mail já utilizado;
-- Para atualizar sua senha, o usuário deve informar a senha antiga;
-- Para atualizar sua senha, o usuário deve confirmar sua senha nova;
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-## Painel do prestador
+### Autor
+---
 
-**RF**
+<p>
+  <a href="#">
+    <img src="https://avatars1.githubusercontent.com/u/64096832?s=460&u=b785643ea39e67bb0f05c9f4d43e478b7029c807&v=4" height="100px" width="100px" style="border-radius:50px" alt=""/>
+    <br />
+    <sub><b>Rodolfo Della Violla</b></sub>
+  </a>
 
-- O usuário deve poder listar seus agendamentos de um dia específico;
-- O prestador deve receber uma notificação sempre que houver um novo agendamento;
-- O prestador deve poder visualizar as notifiações não lidas;
+  <p>
+    <a href="https://www.linkedin.com/in/rodolfoviolla/">
+      <img alt="LinkedIn" src="https://img.shields.io/badge/-LinkedIn-%237159c1?style=flat&logo=linkedin">
+    </a>
+    <a href="https://twitter.com/RodolfoViolla">
+      <img alt="Twitter" src="https://img.shields.io/badge/-Twitter-%237159c1?style=flat&logo=twitter">
+    </a>
+    <a href="mailto:rodolfo.violla@gmail.com">
+      <img alt="Gmail" src="https://img.shields.io/badge/-Email-%237159c1?style=flat&logo=gmail">
+    </a>
+  </p>
+</p>
 
-**RNF**
+## Licença
 
-- Os agendamentos do prestador no dia devem ser armazenados em cache;
-- As notificações do prestador devem ser armazenadas no MongoDB;
-- As notificações do prestador devem ser enviadas em tempo-real utilizando Socket.io;
-
-**RN**
-
-- A notificação deve ter um status de lida ou não-lida para que o prestador possa controlar;
-
-## Agendamento de serviços
-
-**RF**
-
-- O usuário deve poder listar todos prestadores de serviço cadastrados;
-- O usuário deve poder listar os dias de um mês com pelo menos um horário disponível de um prestador;
-- O usuário deve poder listar horários disponíveis em um dia específico de um prestador;
-- O usuário deve poder realizar um novo agendamento com um prestador;
-
-**RNF**
-
-- A listagem de prestadores deve ser armazenada em cache;
-
-**RN**
-
-- Cada agendamento deve durar exatamente 1h;
-- Os agendamentos devem estar disponíveis entre 8h e 18h (primeiro às 8h, último às 17h);
-- O usuário não pode agendar em um horário já ocupado;
-- O usuário não pode agendar em um horário que já passou;
-- O usuário não pode agendar um horário com ele mesmo;
+Este projeto esta sobe a licença [MIT](./LICENSE.md).
