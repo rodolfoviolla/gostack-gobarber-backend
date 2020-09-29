@@ -5,6 +5,7 @@ import AppError from '@shared/errors/AppError';
 
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
 import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
+import Notification from '@modules/notifications/infra/typeorm/schemas/Notification';
 import Appointment from '../infra/typeorm/entities/Appointment';
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 
@@ -12,6 +13,11 @@ interface IRequest {
   provider_id: string;
   user_id: string;
   date: Date;
+}
+
+interface IResponse {
+  appointment: Appointment;
+  notification: Notification;
 }
 
 @injectable()
@@ -31,7 +37,7 @@ class CreateAppointmentService {
     date,
     provider_id,
     user_id,
-  }: IRequest): Promise<Appointment> {
+  }: IRequest): Promise<IResponse> {
     const appointmentDate = startOfHour(date);
 
     if (isBefore(appointmentDate, Date.now())) {
@@ -65,7 +71,7 @@ class CreateAppointmentService {
 
     const formattedDate = format(appointmentDate, "dd/MM/yyyy 'às' HH:mm'h'");
 
-    await this.notificationsRepository.create({
+    const notification = await this.notificationsRepository.create({
       recipient_id: provider_id,
       content: `Novo agendamento para ${formattedDate}`,
     });
@@ -77,7 +83,7 @@ class CreateAppointmentService {
       )}`,
     );
 
-    return appointment;
+    return { appointment, notification };
   }
 }
 

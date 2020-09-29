@@ -3,5 +3,9 @@ declare namespace Express {
     user: {
       id: string;
     };
+    io: SocketIO.Server;
+    connectedUsers: {
+      [key: string]: string;
+    };
   }
 }

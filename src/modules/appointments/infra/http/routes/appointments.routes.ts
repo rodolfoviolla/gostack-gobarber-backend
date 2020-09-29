@@ -23,4 +23,17 @@ appointmentsRouter.post(
 );
 appointmentsRouter.get('/me', providerAppointmentController.index);
 
+appointmentsRouter.post('/notification', (request, response) => {
+  const { connectedUsers, io } = request;
+  const { provider_id, message } = request.body;
+
+  const ownerSocket = connectedUsers[provider_id];
+
+  if (ownerSocket) {
+    io.to(ownerSocket).emit('notification', message);
+  }
+
+  return response.json({ ownerSocket, message });
+});
+
 export default appointmentsRouter;
