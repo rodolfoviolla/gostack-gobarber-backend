@@ -14,7 +14,7 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v1.4.3
       with: 
-        node-version: 12.x
+        node-version: 14.x
     
     # Instalar as dependências Yarn
     - name: Install dependencies
@@ -46,7 +46,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          cd ~/app/gostack-gobarber-backend
+          cd ~/apis/gobarber
           yarn
           ./node_modules/.bin/typeorm migration:run
           pm2 restart gobarber-api
