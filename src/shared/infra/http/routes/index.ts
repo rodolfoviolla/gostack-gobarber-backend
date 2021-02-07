@@ -9,6 +9,12 @@ import profileRouter from '@modules/users/infra/http/routes/profile.routes';
 
 const routes = Router();
 
+routes.get('/', (_, response) => {
+  const today = new Date(Date.now());
+
+  return response.json({ today });
+});
+
 routes.use('/appointments', appointmentsRouter);
 routes.use('/providers', providersRouter);
 routes.use('/users', usersRouter);
